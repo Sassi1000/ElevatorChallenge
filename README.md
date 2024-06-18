@@ -22,4 +22,5 @@ Call for an elevator: When a user presses the call button on a floor, a request 
 Locating a nearby elevator: the building calculates which elevator is closest to the requested floor and sends it.
 
 Screenshot:
+
 ![Main Screen](https://github.com/Sassi1000/ElevatorChallenge/blob/master/ScreenShot1.png)
