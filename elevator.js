@@ -19,16 +19,12 @@ class Elevator {
             console.log(`Elevator is already on Floor ${floorNumber}`);
             return;
         }
-
-        const travelDistance = Math.abs((floorNumber - this.currentFloor) * 110);
-        this.moveTo(floorNumber, travelDistance);
+        else {
+            const travelDistance = Math.abs((floorNumber - this.currentFloor) * 110);
+            this.moveTo(floorNumber, travelDistance);
+        }
     }
     moveTo(floorNumber, travelDistance) {
-        if (floorNumber === this.currentFloor) {
-            console.log(`Elevator is already on Floor ${floorNumber}`);
-            return;
-        }
-    
         setTimeout(() => {
             this.isMoving = true;
             const floorHeight = 110;
@@ -44,7 +40,7 @@ class Elevator {
                 this.isMoving = false;
                 this.elevatorElement.style.transition = 'none';
                 audio.play();
-    
+
                 const callButton = document.getElementById(`call-button-${floorNumber}`);
                 if (callButton) {
                     callButton.style.color = 'green';
@@ -52,12 +48,12 @@ class Elevator {
                     audio.addEventListener('ended', () => {
                     }, { once: true });
                 }
-    
+
                 processQueue();
             }, 2000);
         }, this.isMoving ? 2000 : 0);
     }
-    
+
     createHTMLElement() {
         let marginLeft = 100;
         const elevatorElement = document.createElement('div');
@@ -101,7 +97,7 @@ function processQueue() {
     const closestElevator = findClosestElevator(request, availableElevators);
     const travelDistance = Math.abs((request - closestElevator.currentFloor) * 110);
     closestElevator.moveTo(request, travelDistance);
-} 
+}
 
 
 function findClosestElevator(floorNumber, elevators) {
@@ -111,7 +107,7 @@ function findClosestElevator(floorNumber, elevators) {
         if (!elevator.isMoving) {
             const distance = Math.abs((floorNumber - elevator.currentFloor) * 110);
             const travelTime = distance / 55;
-            const totalTime = travelTime + (elevator.currentFloor !== floorNumber ? 2 : 0); 
+            const totalTime = travelTime + (elevator.currentFloor !== floorNumber ? 2 : 0);
             if (totalTime < minTime) {
                 minTime = totalTime;
                 closestElevator = elevator;
