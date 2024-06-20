@@ -1,4 +1,4 @@
-const floors = 20;
+const floors = 12;
 const elevators = 4;
 
 document.addEventListener('DOMContentLoaded', () => {
